@@ -1,8 +1,8 @@
 function withBorder(WrapperComponent) {
-  return () => {
+  return (props) => {
     return (
       <div style={{ border: "1px solid" }}>
-        <WrapperComponent />
+        <WrapperComponent {...props} />
       </div>
     );
   };
