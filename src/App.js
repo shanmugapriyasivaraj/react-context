@@ -1,13 +1,24 @@
 import React, { useEffect, useState } from "react";
-
-import withBorder from "./WithBorder";
-import withProfile from "./WithProfile";
+import { AppContext } from "./Context";
+import Test1 from "./Test1";
 
 class App extends React.Component {
   render() {
-    console.log(this.props);
-    return <p>Hello..!</p>;
+    //props drilling
+    return (
+      <>
+        <AppContext.Consumer>
+          {(context) => {
+            return <p>Hello.. - {context.name}</p>;
+          }}
+        </AppContext.Consumer>
+        <AppContext.Provider value={{ name: "Karthik" }}>
+          <Test1 />
+        </AppContext.Provider>
+        <Test1 />
+      </>
+    );
   }
 }
 
-export default withProfile(App);
+export default App;
